@@ -31,9 +31,18 @@ jQuery(document).ready(function ($) {
     });
 
     function goToByScroll(dataslide) {
-        htmlbody.animate({
-            scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top
-        }, 2000, 'easeInOutQuint');
+        var currentPosition = -1*($('html').offset().top);
+        var clickedPosition = $('.slide[data-slide="' + dataslide + '"]').offset().top;
+        if(clickedPosition>currentPosition){
+            htmlbody.animate({
+                scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top
+            }, 2000, 'easeInOutQuint');
+        }else{
+            console.log("up");
+            htmlbody.animate({
+                scrollTop: $('.slide[data-slide="' + dataslide + '"]').offset().top - 10 
+            }, 2000, 'easeInOutQuint'); 
+        }
     }
 
 
